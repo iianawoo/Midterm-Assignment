@@ -9,7 +9,12 @@
     position: relative;
     height: 100hv;
     width: 100%;
-    background: rgb(219, 193, 197);
+    background:rgb(168, 156, 158);
+}
+
+.logo {
+    width: 150px;
+    height: 40px;
 }
 
 .container {
@@ -93,102 +98,59 @@ button:hover {
 
 }
 
-.content h2 {
-    color: #fff;
-    font-size: 95px;
-    font-weight: 700;
-    line-height: 1;
-    margin-bottom: 35px;
-    font-family: 'Space Grotesk', sans-serif;
-
-}
-
-.content h3 {
-    color: #fff;
-    font-size: 95px;
-    font-weight: 700;
-    line-height: 1;
-    margin-bottom: 35px;
-    font-family: 'Space Grotesk', sans-serif;
-
-}
-
 .content p {
     color: #fff;
-    font-size: 60px;
+    font-size: 16px;
     font-weight: normal;
     line-height: 1.85;
     margin-bottom: 30px;
 }
 
-.btn {
-    background-color: palevioletred;
-    display: inline-block;
-    padding: 16px 40px;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 600;
-    text-decoration: none;
-    border: 1px solid pink;
-    margin-right: 30px;
+article {
+    margin-top: 100px;
+    margin-left: 350px;
+}
+
+
+.grid-gallery {
+    --size: 100px;
+    display: grid;
+    grid-template-columns: repeat(6, var(--size));
+    grid-auto-rows: var(--size);
+    gap: 5px;
+    place-items: start center;
+    margin-bottom: var(--size);
+}
+
+.grid-gallery img {
+    width: calc(var(--size) * 2);
+    height: calc(var(--size) * 2);
+    object-fit: cover;
+    grid-column: auto / span 2;
     border-radius: 5px;
+    clip-path: path("M90,10 C100,0 100,0 110,10 190,90 190,90 190,90 200,100 200,100 190,110 190,110 110,190 110,190 100,200 100,200 90,190 90,190 10,110 10,110 0,100 0,100 10,90Z");
 }
 
-.btn:hover {
-    background-color: #fff;
-    border: 1px solid #fff;
-    color: plum;
-    transform: scale(1.1);
-    transition: .5s;
+.grid-gallery img:nth-child(5n - 1) {
+    grid-column: 2 / span 2
 }
 
-.mid {
-    width: 500px;
-    position: absolute;
-    left: 75%;
-    top: 60%;
-    transform: translate(-50%, -50%);
+.grid-gallery:has(img:hover) img:not(:hover) {
+    filter: brightness(0.5) contrast(0.5);
 }
 
-.mid h1 {
-    width: 800px;
+.grid-gallery img {
+    /* ... */
+    transition: clip-path 0.25s, filter 0.75s;
 }
 
-.mid p {
-    width: 700px;
+.grid-gallery img:hover {
+    clip-path: path("M0,0 C0,0 200,0 200,0 200,0 200,100 200,100 200,100 200,200 200,200 200,200 100,200 100,200 100,200 100,200 0,200 0,200 0,100 0,100 0,100 0,100 0,100Z");
+    transition: clip-path 0.25s, filter 0.25s;
+    z-index: 1;
 }
 
-.content p {
-    max-width: 500px;
-}
-
-.thumbnail {
-    width: 100%;
-    border-radius: 50%;
-}
-
-.video-title {
-    margin-top: 0;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 20px;
-    margin-bottom: 12px;
-}
-
-.video-info-grid {
-    display: grid;
-}
-
-
-.video-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    column-gap: 16px;
-    row-gap: 40px;
-    margin-top: 50px;
-}
-
-p {
-    font-family: 'Roboto';
-    color: white;
+.grid-gallery a:focus {
+    outline: 1px dashed black;
+    outline-offset: -5px;
 }
